@@ -58,3 +58,20 @@ class LocalConfig(Config):
         'title': 'Search Service',
         'uiversion': 3
     }
+
+class ProdConfig(Config):
+    DEBUG = False
+    TESTING = False
+    STATS = False
+
+    # Should be everything (ex: https://vpc-blah-blah.es.amazonaws.com:443)
+    PROXY_ENDPOINT = os.environ.get('ES_ENDPOINT')
+    PROXY_CLIENT = PROXY_CLIENTS[os.environ.get('PROXY_CLIENT', 'ELASTICSEARCH')]
+
+    SWAGGER_ENABLED = True
+    SWAGGER_TEMPLATE_PATH = os.path.join('api', 'swagger_doc', 'template.yml')
+    SWAGGER = {
+        'openapi': '3.0.2',
+        'title': 'Search Service',
+        'uiversion': 3
+    }
