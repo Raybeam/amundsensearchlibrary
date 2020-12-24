@@ -67,6 +67,9 @@ class ProdConfig(Config):
     # Should be everything (ex: https://vpc-blah-blah.es.amazonaws.com:443)
     PROXY_ENDPOINT = os.environ.get('ES_ENDPOINT')
     PROXY_CLIENT = PROXY_CLIENTS[os.environ.get('PROXY_CLIENT', 'ELASTICSEARCH')]
+    PROXY_CLIENT_KEY = None
+    PROXY_USER = None
+    PROXY_PASSWORD = None
 
     SWAGGER_ENABLED = True
     SWAGGER_TEMPLATE_PATH = os.path.join('api', 'swagger_doc', 'template.yml')
